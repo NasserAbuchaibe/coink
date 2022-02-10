@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import render_template, request, redirect, url_for
 from flask_uuid import FlaskUUID
 from flask_wtf import FlaskForm
@@ -30,3 +31,9 @@ def index():
         'login_form': login_form
     }
     return render_template('index.html', **context)
+
+
+@app.route('/list')
+def list_all():
+    users = Usuario.query.all()
+    return render_template('list.html', users=users)
