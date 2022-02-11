@@ -1,6 +1,6 @@
 import logging
 
-from flask import redirect, render_template, request, url_for, flash
+from flask import flash, redirect, render_template, request, url_for
 from sqlalchemy import exc
 
 from app import app, db
@@ -9,6 +9,16 @@ from models import Usuario
 from services import logs
 
 logger = logging.getLogger(__name__)
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    return render_template('500.html'), 500
 
 
 @app.route('/list')
@@ -30,7 +40,7 @@ def index():
             flash('Registro creado')
         except SystemError as err:
             logger.error("Error %s", str(err))
-            """Return "error"""
+
         return redirect(url_for('index'))
 
     context = {
@@ -60,4 +70,3 @@ def prepare_user_to_db(username, email, city):
         raise SystemError(
             f"Ocurrio un error al preparar la data de usuario {str(err)}")
     return user
-
