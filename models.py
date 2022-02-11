@@ -1,11 +1,10 @@
-from enum import unique
-
 from sqlalchemy import true
+
 from app import db
 
 
 class Usuario(db.Model):
-    """Modelo Usuario"""
+    """User Model"""
     __tablename__ = 'usuario'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100))
