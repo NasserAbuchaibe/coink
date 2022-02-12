@@ -1,3 +1,5 @@
+"""config file"""
+
 import os
 
 SECRET_KEY = 'test'

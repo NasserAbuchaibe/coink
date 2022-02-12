@@ -1,3 +1,5 @@
+""" File containing the logs function """
+
 from datetime import datetime
 
 

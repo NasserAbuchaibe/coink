@@ -1,3 +1,5 @@
+"""generation of the form to capture the data"""
+
 from flask_wtf import FlaskForm
 from wtforms.fields import EmailField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email
